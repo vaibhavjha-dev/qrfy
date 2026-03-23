@@ -1,0 +1,42 @@
+{
+  "name": "qrfy",
+  "version": "1.0.0",
+  "description": "Scan your dev server instantly - QR code for local dev URLs",
+  "author": "Vaibhav Jha (https://github.com/vaibhavjha-dev)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vaibhavjha-dev/qrfy.git"
+  },
+  "homepage": "https://github.com/vaibhavjha-dev/qrfy#readme",
+  "bugs": {
+    "url": "https://github.com/vaibhavjha-dev/qrfy/issues"
+  },
+  "bin": {
+    "qrfy": "./bin/qrfy.js"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "LICENSE",
+    "README.md"
+  ],
+  "keywords": [
+    "qr",
+    "qrcode",
+    "dev-server",
+    "mobile",
+    "localhost",
+    "cli",
+    "developer-tools",
+    "vite",
+    "nextjs",
+    "react"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  },
+  "dependencies": {
+    "qrcode-terminal": "^0.12.0"
+  }
+}
