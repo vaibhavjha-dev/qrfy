@@ -39,17 +39,21 @@ $ qrfy next dev
   > next dev
   > ready - started server on 0.0.0.0:3000
 
+  -----------------------------------------------
+
   QRfy connected
 
   Local:   http://localhost:3000
   Mobile:  http://192.168.1.5:3000
 
   Scan to open on your phone:
+
+  [QR CODE]
+
+  Ensure both devices are on the same WiFi
+
+  -----------------------------------------------
 ```
-
-<img src="assets/qr-preview.png" alt="QR Code - scan to open @vaibhavjha/qrfy on npm" width="200">
-
-*Scan this QR code to visit the [npm package page](https://www.npmjs.com/package/@vaibhavjha/qrfy)*
 
 ---
 
