@@ -1,34 +1,46 @@
-<h1 align="center">QRfy</h1>
+# QRfy
 
-<p align="center">
-  <b>Scan your dev server instantly.</b><br>
-  One command. One scan. Your app opens on your phone.
-</p>
+**Your dev server, on your phone, in seconds.**
+Stop typing IPs. Start scanning.
 
-<p align="center">
-  <a href="https://www.npmjs.com/package/@vaibhavjha/qrfy"><img src="https://img.shields.io/npm/v/@vaibhavjha/qrfy.svg?style=flat-square&color=blue" alt="npm version"></a>
-  <a href="https://www.npmjs.com/package/@vaibhavjha/qrfy"><img src="https://img.shields.io/npm/dm/@vaibhavjha/qrfy.svg?style=flat-square" alt="downloads"></a>
-  <a href="https://github.com/vaibhavjha-dev/qrfy/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@vaibhavjha/qrfy.svg?style=flat-square" alt="license"></a>
-</p>
+[![npm version](https://img.shields.io/npm/v/@vaibhavjha/qrfy.svg?style=for-the-badge&color=blue)](https://www.npmjs.com/package/@vaibhavjha/qrfy)
+[![license](https://img.shields.io/npm/l/@vaibhavjha/qrfy.svg?style=for-the-badge)](https://github.com/vaibhavjha-dev/qrfy/blob/main/LICENSE)
+[![node](https://img.shields.io/node/v/@vaibhavjha/qrfy.svg?style=for-the-badge)](https://nodejs.org)
 
 ---
 
-## The Problem
+## Why?
 
-Every time you start a dev server and want to test on your phone:
+> You start a dev server. You want to test on your phone. Now you're squinting at `ifconfig` output and fat-fingering `192.168.1.47:3000` into a tiny mobile browser. Again.
 
-1. Find your local IP address
-2. Type `192.168.x.x:3000` on your phone
-3. Mistype it. Try again.
-4. Repeat this 10 times a day.
+**QRfy fixes this in one line.**
 
-## The Solution
+---
+
+## Quick Start
 
 ```bash
+# Install globally
+npm install -g @vaibhavjha/qrfy
+
+# Run with your dev server
 qrfy next dev
 ```
 
+That's it. A QR code appears in your terminal. Scan it. Done.
+
+---
+
+## Demo
+
 ```
+$ qrfy next dev
+
+  > next dev
+  > ready - started server on 0.0.0.0:3000
+
+  -----------------------------------------------
+
   QRfy connected
 
   Local:   http://localhost:3000
@@ -36,12 +48,19 @@ qrfy next dev
 
   Scan to open on your phone:
 
-  [QR CODE]
+  ██████████████████████████████
+  ██ ▄▄▄▄▄ █▄▄▄ ▀█▄█▄█ ▄▄▄▄▄ █
+  ██ █   █ ██▄▀ █ ▀ ▄█ █   █ █
+  ██ █▄▄▄█ ██▀▄ ▄███▀█ █▄▄▄█ █
+  ██▄▄▄▄▄▄▄█ ▀▄█ ▀▄▀ █▄▄▄▄▄▄▄█
+  ██▄ █▄▄▀▄██▄▀█▄██ ▀▀▄█▀▀▀▀▄█
+  ██  ▄█ ▀▄  ▄██▄█▄ █ ▄▄  ▀▀ █
+  ██████████████████████████████
 
   Ensure both devices are on the same WiFi
-```
 
-Scan the QR code. Done.
+  -----------------------------------------------
+```
 
 ---
 
@@ -52,7 +71,7 @@ npm install -g @vaibhavjha/qrfy
 ```
 
 <details>
-<summary>Other package managers</summary>
+<summary><b>yarn / pnpm / bun</b></summary>
 
 ```bash
 yarn global add @vaibhavjha/qrfy
@@ -62,22 +81,31 @@ bun add -g @vaibhavjha/qrfy
 
 </details>
 
+---
+
 ## Usage
 
 ```bash
 qrfy <your-dev-command>
 ```
 
-| Framework | Command |
-|-----------|---------|
-| Next.js | `qrfy next dev` |
-| Vite | `qrfy vite` |
-| npm scripts | `qrfy npm run dev` |
-| Create React App | `qrfy react-scripts start` |
-| Remix | `qrfy remix dev` |
-| Any server | `qrfy python -m http.server 8000` |
+### Works With Everything
 
-### Add to package.json
+| | Framework | Command |
+|---|-----------|---------|
+| **Next.js** | React framework | `qrfy next dev` |
+| **Vite** | Lightning fast | `qrfy vite` |
+| **CRA** | Create React App | `qrfy react-scripts start` |
+| **Remix** | Full stack React | `qrfy remix dev` |
+| **Astro** | Content-focused | `qrfy astro dev` |
+| **SvelteKit** | Svelte framework | `qrfy svelte-kit dev` |
+| **npm scripts** | Any project | `qrfy npm run dev` |
+| **Python** | http.server | `qrfy python -m http.server 8000` |
+| **Go** | Any server | `qrfy go run main.go` |
+
+> Basically anything that prints a URL or port to the terminal.
+
+### Drop it in `package.json`
 
 ```json
 {
@@ -87,40 +115,109 @@ qrfy <your-dev-command>
 }
 ```
 
-Then just `npm run dev` and scan.
+Now `npm run dev` gives you a QR code every time. Your whole team gets it for free.
 
-### CLI Options
+---
 
+## CLI Options
+
+```bash
+qrfy <command>       # Wrap a dev server
+qrfy --help, -h      # Show help
+qrfy --version, -v   # Show version
 ```
-qrfy --help       Show help message
-qrfy --version    Show version number
-```
+
+---
 
 ## How It Works
 
 ```
-You run:  qrfy vite
-          |
-          v
-   Spawns your dev server
-          |
-          v
-   Watches stdout for a port
-          |
-          v
-   Detects your LAN IP
-          |
-          v
-   Generates QR code
+  +------------------+
+  |  qrfy next dev   |   You run your command
+  +--------+---------+
+           |
+           v
+  +------------------+
+  |  Spawn process   |   QRfy runs it as a child process
+  +--------+---------+
+           |
+           v
+  +------------------+
+  |  Watch stdout    |   Detects port from server output
+  +--------+---------+
+           |
+           v
+  +------------------+
+  |  Get LAN IP      |   Finds your local network address
+  +--------+---------+
+           |
+           v
+  +------------------+
+  |  Print QR code   |   Generates scannable QR in terminal
+  +------------------+
 ```
 
-Your dev server output passes through normally — QRfy just adds the QR code on top. No config. No setup. Zero overhead.
+- All stdout/stderr from your server passes through untouched
+- QR renders once — no spam
+- Ctrl+C stops both QRfy and your server cleanly
+
+---
 
 ## Requirements
 
-- Node.js >= 14
-- Both devices on the same WiFi network
+| | Requirement |
+|---|---|
+| **Runtime** | Node.js >= 14 |
+| **Network** | Both devices on the same WiFi |
+| **OS** | macOS, Linux, Windows |
+
+---
+
+## Troubleshooting
+
+<details>
+<summary><b>QR code doesn't appear</b></summary>
+
+The port wasn't detected from your server's output. Make sure your dev server prints a URL like `http://localhost:3000` to stdout or stderr.
+
+</details>
+
+<details>
+<summary><b>Phone can't connect</b></summary>
+
+- Ensure both devices are on the same WiFi network
+- Check if your firewall is blocking the port
+- Some public/corporate WiFi networks isolate devices
+
+</details>
+
+<details>
+<summary><b>Command not found after install</b></summary>
+
+Make sure your global npm bin is in your PATH:
+```bash
+npm config get prefix
+# Add <prefix>/bin to your PATH if needed
+```
+
+</details>
+
+---
+
+## Contributing
+
+PRs welcome! This is a simple tool — keep it that way.
+
+```bash
+git clone https://github.com/vaibhavjha-dev/qrfy.git
+cd qrfy
+npm link    # Makes 'qrfy' available globally from local code
+```
+
+---
 
 ## License
 
-[MIT](LICENSE) - Made by [Vaibhav Jha](https://github.com/vaibhavjha-dev)
+[MIT](LICENSE)
+
+Made by [Vaibhav Jha](https://github.com/vaibhavjha-dev)

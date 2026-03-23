@@ -1,6 +1,6 @@
 {
   "name": "@vaibhavjha/qrfy",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Scan your dev server instantly - QR code for local dev URLs",
   "author": "Vaibhav Jha (https://github.com/vaibhavjha-dev)",
   "repository": {
