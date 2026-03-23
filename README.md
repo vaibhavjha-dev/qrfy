@@ -1,56 +1,32 @@
-# QRfy
+<h1 align="center">QRfy</h1>
 
-**Scan your dev server instantly.**
+<p align="center">
+  <b>Scan your dev server instantly.</b><br>
+  One command. One scan. Your app opens on your phone.
+</p>
 
-QRfy wraps any dev server command and generates a QR code in your terminal so you can open it on your phone in seconds. No more typing `192.168.x.x:3000` manually.
-
-[![npm version](https://img.shields.io/npm/v/@vaibhavjha/qrfy.svg)](https://www.npmjs.com/package/@vaibhavjha/qrfy)
-[![license](https://img.shields.io/npm/l/@vaibhavjha/qrfy.svg)](https://github.com/vaibhavjha-dev/qrfy/blob/main/LICENSE)
+<p align="center">
+  <a href="https://www.npmjs.com/package/@vaibhavjha/qrfy"><img src="https://img.shields.io/npm/v/@vaibhavjha/qrfy.svg?style=flat-square&color=blue" alt="npm version"></a>
+  <a href="https://www.npmjs.com/package/@vaibhavjha/qrfy"><img src="https://img.shields.io/npm/dm/@vaibhavjha/qrfy.svg?style=flat-square" alt="downloads"></a>
+  <a href="https://github.com/vaibhavjha-dev/qrfy/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@vaibhavjha/qrfy.svg?style=flat-square" alt="license"></a>
+</p>
 
 ---
 
-## Install
+## The Problem
+
+Every time you start a dev server and want to test on your phone:
+
+1. Find your local IP address
+2. Type `192.168.x.x:3000` on your phone
+3. Mistype it. Try again.
+4. Repeat this 10 times a day.
+
+## The Solution
 
 ```bash
-npm install -g @vaibhavjha/qrfy
-```
-
-Or with other package managers:
-
-```bash
-# yarn
-yarn global add @vaibhavjha/qrfy
-
-# pnpm
-pnpm add -g @vaibhavjha/qrfy
-
-# bun
-bun add -g @vaibhavjha/qrfy
-```
-
-## Usage
-
-```bash
-qrfy <your-dev-command>
-```
-
-### Examples
-
-```bash
-# Next.js
 qrfy next dev
-
-# Vite
-qrfy vite
-
-# npm scripts
-qrfy npm run dev
-
-# Any server
-qrfy python -m http.server 8000
 ```
-
-### Output
 
 ```
   QRfy connected
@@ -65,16 +41,43 @@ qrfy python -m http.server 8000
   Ensure both devices are on the same WiFi
 ```
 
-## How It Works
+Scan the QR code. Done.
 
-1. Spawns your dev command as a child process
-2. Watches stdout/stderr for a port number
-3. Detects your LAN IP address
-4. Generates a terminal QR code pointing to `http://<your-ip>:<port>`
+---
 
-Your dev server output is passed through normally — QRfy just adds the QR code on top.
+## Install
 
-## Package.json Integration
+```bash
+npm install -g @vaibhavjha/qrfy
+```
+
+<details>
+<summary>Other package managers</summary>
+
+```bash
+yarn global add @vaibhavjha/qrfy
+pnpm add -g @vaibhavjha/qrfy
+bun add -g @vaibhavjha/qrfy
+```
+
+</details>
+
+## Usage
+
+```bash
+qrfy <your-dev-command>
+```
+
+| Framework | Command |
+|-----------|---------|
+| Next.js | `qrfy next dev` |
+| Vite | `qrfy vite` |
+| npm scripts | `qrfy npm run dev` |
+| Create React App | `qrfy react-scripts start` |
+| Remix | `qrfy remix dev` |
+| Any server | `qrfy python -m http.server 8000` |
+
+### Add to package.json
 
 ```json
 {
@@ -86,19 +89,32 @@ Your dev server output is passed through normally — QRfy just adds the QR code
 
 Then just `npm run dev` and scan.
 
-## Supported Frameworks
+### CLI Options
 
-Works with anything that prints a URL or port to the terminal:
+```
+qrfy --help       Show help message
+qrfy --version    Show version number
+```
 
-- Next.js
-- Vite
-- Create React App
-- Remix
-- Astro
-- SvelteKit
-- Express / Fastify / any Node server
-- Python / Go / Ruby servers
-- Anything else
+## How It Works
+
+```
+You run:  qrfy vite
+          |
+          v
+   Spawns your dev server
+          |
+          v
+   Watches stdout for a port
+          |
+          v
+   Detects your LAN IP
+          |
+          v
+   Generates QR code
+```
+
+Your dev server output passes through normally — QRfy just adds the QR code on top. No config. No setup. Zero overhead.
 
 ## Requirements
 
@@ -107,4 +123,4 @@ Works with anything that prints a URL or port to the terminal:
 
 ## License
 
-MIT
+[MIT](LICENSE) - Made by [Vaibhav Jha](https://github.com/vaibhavjha-dev)
