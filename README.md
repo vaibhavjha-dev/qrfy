@@ -4,28 +4,28 @@
 
 QRfy wraps any dev server command and generates a QR code in your terminal so you can open it on your phone in seconds. No more typing `192.168.x.x:3000` manually.
 
-[![npm version](https://img.shields.io/npm/v/qrfy.svg)](https://www.npmjs.com/package/qrfy)
-[![license](https://img.shields.io/npm/l/qrfy.svg)](https://github.com/vaibhavjha-dev/qrfy/blob/main/LICENSE)
+[![npm version](https://img.shields.io/npm/v/@vaibhavjha/qrfy.svg)](https://www.npmjs.com/package/@vaibhavjha/qrfy)
+[![license](https://img.shields.io/npm/l/@vaibhavjha/qrfy.svg)](https://github.com/vaibhavjha-dev/qrfy/blob/main/LICENSE)
 
 ---
 
 ## Install
 
 ```bash
-npm install -g qrfy
+npm install -g @vaibhavjha/qrfy
 ```
 
 Or with other package managers:
 
 ```bash
 # yarn
-yarn global add qrfy
+yarn global add @vaibhavjha/qrfy
 
 # pnpm
-pnpm add -g qrfy
+pnpm add -g @vaibhavjha/qrfy
 
 # bun
-bun add -g qrfy
+bun add -g @vaibhavjha/qrfy
 ```
 
 ## Usage
