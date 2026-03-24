@@ -20,11 +20,11 @@ Stop typing IPs. Start scanning.
 ## Quick Start
 
 ```bash
-# Install globally
-npm install -g @vaibhavjha/qrfy
+# Install as a dev dependency
+npm install -D @vaibhavjha/qrfy
 
 # Run with your dev server
-qrfy next dev
+npx qrfy next dev
 ```
 
 That's it. A QR code appears in your terminal. Scan it. Done.
@@ -60,13 +60,26 @@ $ qrfy next dev
 ## Install
 
 ```bash
-npm install -g @vaibhavjha/qrfy
+# As a dev dependency
+npm install -D @vaibhavjha/qrfy
 ```
 
 <details>
 <summary><b>yarn / pnpm / bun</b></summary>
 
 ```bash
+yarn add -D @vaibhavjha/qrfy
+pnpm add -D @vaibhavjha/qrfy
+bun add -d @vaibhavjha/qrfy
+```
+
+</details>
+
+<details>
+<summary><b>Install globally (optional)</b></summary>
+
+```bash
+npm install -g @vaibhavjha/qrfy
 yarn global add @vaibhavjha/qrfy
 pnpm add -g @vaibhavjha/qrfy
 bun add -g @vaibhavjha/qrfy
@@ -161,7 +174,7 @@ qrfy --version, -v   # Show version
 | | Requirement |
 |---|---|
 | **Runtime** | Node.js >= 14 |
-| **Network** | Both devices on the same WiFi |
+| **Network** | Same WiFi |
 | **OS** | macOS, Linux, Windows |
 
 ---
