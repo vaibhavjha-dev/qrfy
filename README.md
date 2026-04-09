@@ -125,12 +125,27 @@ Now `npm run dev` gives you a QR code every time. Your whole team gets it for fr
 
 ---
 
+## QR for Anything
+
+Need a QR code for a URL, a WiFi password, or any piece of text? Use `-q`:
+
+```bash
+qrfy -q https://example.com
+qrfy -q "hello world"
+qrfy -q "WIFI:T:WPA;S:MyNetwork;P:mypassword;;"
+```
+
+No dev server, no port detection — just a scannable QR code in your terminal.
+
+---
+
 ## CLI Options
 
 ```bash
-qrfy <command>       # Wrap a dev server
-qrfy --help, -h      # Show help
-qrfy --version, -v   # Show version
+qrfy <command>            # Wrap a dev server
+qrfy -q <text|url...>     # QR code for any text or URL
+qrfy --help, -h           # Show help
+qrfy --version, -v        # Show version
 ```
 
 ---
