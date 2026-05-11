@@ -125,6 +125,34 @@ Now `npm run dev` gives you a QR code every time. Your whole team gets it for fr
 
 ---
 
+## Share From Anywhere (Cloudflare Tunnel)
+
+Same WiFi not an option? Pass `-t` (or `--tunnel`) and QRfy will expose your dev server through a free [Cloudflare quick tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/do-more-with-tunnels/trycloudflare/) — a fresh `*.trycloudflare.com` URL, reachable over cellular, from a coworker's laptop, or a stakeholder on the other side of the world.
+
+```bash
+qrfy -t next dev
+qrfy --tunnel npm run dev
+```
+
+You'll get a QR for the **public URL** instead of the LAN one. No Cloudflare account needed.
+
+**One-time setup** — install `cloudflared`:
+
+```bash
+# macOS
+brew install cloudflared
+
+# Windows
+winget install --id Cloudflare.cloudflared
+
+# Linux
+# https://pkg.cloudflare.com/index.html
+```
+
+> The tunnel URL is fresh every run and tears down when you Ctrl+C. Don't share it for anything you wouldn't put on the open internet.
+
+---
+
 ## QR for Anything
 
 Need a QR code for a URL, a WiFi password, or any piece of text? Use `-q`:
@@ -143,6 +171,7 @@ No dev server, no port detection — just a scannable QR code in your terminal.
 
 ```bash
 qrfy <command>            # Wrap a dev server
+qrfy -t <command>         # Wrap + expose via Cloudflare tunnel
 qrfy -q <text|url...>     # QR code for any text or URL
 qrfy --help, -h           # Show help
 qrfy --version, -v        # Show version
@@ -189,7 +218,7 @@ qrfy --version, -v        # Show version
 | | Requirement |
 |---|---|
 | **Runtime** | Node.js >= 14 |
-| **Network** | Same WiFi |
+| **Network** | Same WiFi (or `cloudflared` installed for `-t`) |
 | **OS** | macOS, Linux, Windows |
 
 ---
@@ -209,6 +238,13 @@ The port wasn't detected from your server's output. Make sure your dev server pr
 - Ensure both devices are on the same WiFi network
 - Check if your firewall is blocking the port
 - Some public/corporate WiFi networks isolate devices
+
+</details>
+
+<details>
+<summary><b>"cloudflared is not installed" when using <code>-t</code></b></summary>
+
+Tunnel mode shells out to Cloudflare's `cloudflared` binary. Install it with the command for your OS shown in the [Share From Anywhere](#share-from-anywhere-cloudflare-tunnel) section, then retry.
 
 </details>
 
